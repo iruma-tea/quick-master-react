@@ -5,8 +5,11 @@ export default function MyArticle(props) {
     <>
       <dt>
         <a href={props.url}>{props.title}</a>
-        {/* {props.isNew ? <MyNew /> : null} */}
-        {props.isNew && <MyNew />}
+        {(() => {
+          if (props.isNew) {
+            return <MyNew />;
+          }
+        })()}
       </dt>
       <dd>{props.description}</dd>
     </>
