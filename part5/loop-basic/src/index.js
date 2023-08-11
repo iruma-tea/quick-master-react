@@ -45,10 +45,34 @@ const articles = [
 root.render(
   <dl>
     {articles.map((article) => (
-      <MyArticle {...article} />
+      <MyArticle {...article} key={article.url} />
     ))}
   </dl>
 );
+
+// root.render(
+//   <dl>
+//     {articles.map((article, index) => (
+//       <MyArticle {...article} key={index} />
+//     ))}
+//   </dl>
+// );
+
+// root.render(
+//   <dl>
+//     {articles.map((article) => (
+//       <React.Fragment key={article.url}>
+//         <MyArticle {...article} />
+//       </React.Fragment>
+//     ))}
+//   </dl>
+// );
+
+// const list = articles.map((article) => (
+//   <MyArticle {...article} key={article.url} />
+// ));
+// root.render(<dl>{list}</dl>);
+
 // root.render(
 //   <React.StrictMode>
 //     <App />
