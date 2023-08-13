@@ -1,8 +1,8 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
 import "./App.css";
 
-function isCurrent(link) {
-  return link.isActive ? { backgroundColor: "Yellow" } : undefined;
+function isCurrent({ isActive }) {
+  return isActive ? "current" : undefined;
 }
 
 export default function App() {
@@ -10,17 +10,17 @@ export default function App() {
     <>
       <ul>
         <li>
-          <NavLink style={isCurrent} end to="/">
+          <NavLink end className={isCurrent} to="/">
             トップ
           </NavLink>
         </li>
         <li>
-          <NavLink style={isCurrent} to="/hello">
+          <NavLink className={isCurrent} to="/hello">
             Hello
           </NavLink>
         </li>
         <li>
-          <NavLink style={isCurrent} to="/article">
+          <NavLink className={isCurrent} to="/article">
             公開記事
           </NavLink>
         </li>
