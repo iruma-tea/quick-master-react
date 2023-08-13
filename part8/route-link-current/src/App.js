@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { Link, NavLink, Outlet } from "react-router-dom";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function isCurrent(link) {
+  return link.isActive ? { backgroundColor: "Yellow" } : undefined;
 }
 
-export default App;
+export default function App() {
+  return (
+    <>
+      <ul>
+        <li>
+          <NavLink style={isCurrent} end to="/">
+            トップ
+          </NavLink>
+        </li>
+        <li>
+          <NavLink style={isCurrent} to="/hello">
+            Hello
+          </NavLink>
+        </li>
+        <li>
+          <NavLink style={isCurrent} to="/article">
+            公開記事
+          </NavLink>
+        </li>
+      </ul>
+      <hr />
+      <Outlet />
+    </>
+  );
+}
