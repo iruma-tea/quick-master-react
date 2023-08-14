@@ -39,6 +39,11 @@ export default function App() {
             検索結果
           </NavLink>
         </li>
+        <li>
+          <NavLink className={isCurrent} to="/book/978-4-297-13062-6">
+            書籍情報
+          </NavLink>
+        </li>
       </ul>
       <hr />
       <Outlet />

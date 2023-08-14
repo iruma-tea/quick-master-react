@@ -15,6 +15,8 @@ import MyHello from "./MyHello";
 import MyArticle from "./MyArticle";
 import MySearch from "./MySearch";
 import MyQueryArticle from "./MyQueryArticle";
+import MyError from "./MyError";
+import MyBook from "./MyBook";
 import NotFound from "./NotFound";
 
 const router = createBrowserRouter(
@@ -22,9 +24,20 @@ const router = createBrowserRouter(
     <Route path="/" element={<App />}>
       <Route index element={<MyTop />} />
       <Route path="hello" element={<MyHello />} />
-      <Route path="article/:id" element={<MyArticle />} />
+      <Route
+        path="article/:id"
+        element={<MyArticle />}
+        errorElement={<MyError />}
+      />
       <Route path="article" element={<MyQueryArticle />} />
       <Route path="search/*" element={<MySearch />} />
+      <Route
+        path="book/:isbn"
+        element={<MyBook />}
+        loader={({ params }) => {
+          return fetch(`./data/${params.isbn}.json`).then((res) => res.json());
+        }}
+      />
     </Route>
   )
 );
