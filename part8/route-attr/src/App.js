@@ -44,6 +44,11 @@ export default function App() {
             書籍情報
           </NavLink>
         </li>
+        <li>
+          <NavLink className={isCurrent} to="/post">
+            書籍登録
+          </NavLink>
+        </li>
       </ul>
       <hr />
       <Outlet />

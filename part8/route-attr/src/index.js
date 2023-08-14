@@ -8,6 +8,7 @@ import {
   createRoutesFromElements,
   RouterProvider,
   Route,
+  redirect,
 } from "react-router-dom";
 
 import MyTop from "./MyTop";
@@ -17,6 +18,7 @@ import MySearch from "./MySearch";
 import MyQueryArticle from "./MyQueryArticle";
 import MyError from "./MyError";
 import MyBook from "./MyBook";
+import MyBookPost from "./MyBookPost";
 import NotFound from "./NotFound";
 
 const router = createBrowserRouter(
@@ -36,6 +38,32 @@ const router = createBrowserRouter(
         element={<MyBook />}
         loader={({ params }) => {
           return fetch(`./data/${params.isbn}.json`).then((res) => res.json());
+        }}
+      />
+      <Route
+        path="post"
+        element={<MyBookPost />}
+        action={async ({ request }) => {
+          const errs = new Map();
+          const form = await request.formData();
+          const title = form.get("title");
+          const price = Number(form.get("price"));
+
+          if (typeof title !== "string" || title.length > 20) {
+            errs.set("title", "書名は20文字以内で入力してください。");
+          }
+
+          if (Number.isNaN(price) || price < 0) {
+            errs.set("price", "価格は正数で入力してください。");
+          }
+
+          if (errs.size > 0) {
+            return errs;
+          }
+
+          console.log(title, price);
+
+          return redirect("/");
         }}
       />
     </Route>
