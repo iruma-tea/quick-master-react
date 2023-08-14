@@ -29,6 +29,16 @@ export default function App() {
             公開記事No.108
           </NavLink>
         </li>
+        <li>
+          <NavLink className={isCurrent} to="/article?id=108">
+            公開記事(クエリ対応)
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className={isCurrent} to="/search/react/router">
+            検索結果
+          </NavLink>
+        </li>
       </ul>
       <hr />
       <Outlet />
