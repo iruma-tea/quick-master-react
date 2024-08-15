@@ -14,10 +14,12 @@
 		"workbench.colorTheme": "Monokai",
 		"[javascript]": {
 			"editor.formatOnSave": true,
-			"editor.maxTokenizationLineLength": 2500
+			"editor.maxTokenizationLineLength": 2500,
+			"editor.defaultFormatter": "esbenp.prettier-vscode"
 		},
 		"[javascriptreact]": {
 			"editor.formatOnSave": true,
+			"editor.defaultFormatter": "esbenp.prettier-vscode"
 		}
 	}
 }
