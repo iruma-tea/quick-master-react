@@ -12,6 +12,7 @@
 		"files.eol": "\n",
 		"workbench.iconTheme": "vscode-icons",
 		"workbench.colorTheme": "Monokai",
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"[javascript]": {
 			"editor.formatOnSave": true,
 			"editor.maxTokenizationLineLength": 2500,
