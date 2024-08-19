@@ -4,9 +4,12 @@ export default function MyInterval(props) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    setInterval(() => {
+    const t = setInterval(() => {
       setCount((c) => c + 1);
     }, 1000);
+    return () => {
+      clearInterval(t);
+    };
   }, []);
 
   return <p>カウント：{count}</p>;
